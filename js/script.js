@@ -10,6 +10,8 @@ var start = document.getElementById("start");
 var scoreDisplay = document.getElementById("score-display");
 var cells = document.querySelectorAll(".cell");
 
+var activeCellNumber = 0;
+
 function displayScore() {
     levelUp();
     scoreDisplay.innerHTML = "Score: " + score + 
@@ -22,7 +24,8 @@ function levelUp() {
 }
 
 function randomCell() {
-    return Math.floor(Math.random() * 16);
+    activeCellNumber = Math.floor(Math.random() * 16);
+    return activeCellNumber;
 }
 
 function gameOver() {
@@ -38,7 +41,13 @@ function gameOver() {
 function activateCell() {
     var target = randomCell();
     var prevScore = score;
+    //var currentlyActive = true;
+
+    //cells[target].style.backgroundImage = 'url("http://3.bp.blogspot.com/-x_LFV97PsW0/UPlxd__l8lI/AAAAAAAAC4U/dTXly0e4m4M/s1600/JOCHEN+FUCHS+nicolas_cage.jpg")';
+
     cells[target].style.background = "green";
+       //cells[target].animationRising();
+
     setTimeout(function() {
         cells[target].style.background = "red";
         if (score === prevScore) {
@@ -50,15 +59,36 @@ function activateCell() {
 }
 
 
-function animationRising() {
-    cells[target].style.background = "green";
-}
+
+// function applyImage() {
+//     cells[target].style.backgroundImage = 'url("http://3.bp.blogspot.com/-x_LFV97PsW0/UPlxd__l8lI/AAAAAAAAC4U/dTXly0e4m4M/s1600/JOCHEN+FUCHS+nicolas_cage.jpg")';
+
+// }
 
 
-function animationFalling() {
-    
-}
+// function animationRising() {
 
+//     var elem = document.getElementById("animate");
+//     var pos = 0;
+//     var id = setInterval(frame, 5)
+
+//     function frame() {
+//         if (pos == 50) {
+//             clearInterval(id);
+//         }
+//         else {
+//             pos++;
+//             elem.style.top = pos + 'px';
+//         }
+//     }
+
+//     cells[target].style.background = "green";
+// }
+
+
+// function animationFalling() {
+
+// }
 
 
 
@@ -74,12 +104,18 @@ start.addEventListener("click", function() {
     }
 });
 
+
+
+
+
 for (var i = 0; i < cells.length; i++) {
     cells[i].addEventListener("click", function() {
         if (playing) {
             var cell = this;
-            if (this.style.background === "green") {
+            if (this.style.background == "green") {
+ //             if (i == activeCellNumber) {
                 score++;
+              }
             }
             else {
                 lives--;
