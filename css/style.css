@@ -1,0 +1,52 @@
+
+
+#titleContainer {
+
+  text-align: center;
+  font-size: 50px;
+}
+
+
+#gameBoard {
+  height: 330px;
+  width: 330px;
+  margin: 0 auto;
+  border: 1px solid black;
+}
+
+div:hover {
+ cursor: pointer;
+}
+
+.cell {
+
+  cursor: pointer;
+
+  display: inline-block;
+/*  vertical-align: middle;*/
+  width: 21%;
+  margin: 4px;
+  height: 21%;
+  border: 1px solid black;
+/*  max-width: 100%;
+  max-height: 100%;*/
+  background-image: url("http://3.bp.blogspot.com/-x_LFV97PsW0/UPlxd__l8lI/AAAAAAAAC4U/dTXly0e4m4M/s1600/JOCHEN+FUCHS+nicolas_cage.jpg");
+/*  background-image: url("../users/chris/desktop/pics/Cage1.jpeg");*/
+  background-size: contain;
+}
+
+#gameInfo {
+  height: 40px;
+  width: 330px;
+  margin: 0 auto;
+  background: lightblue;
+}
+
+#level-display, #lifes-display {
+  margin-left: 30px;
+}
+
+
+#start { 
+  margin: 10px 37%;
+}
