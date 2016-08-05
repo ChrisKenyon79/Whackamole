@@ -3,7 +3,7 @@
 
 var score = 0;
 var level = 1;
-var lives = 5;
+var lives = 10;
 var playing = false;
 
 var start = document.getElementById("start");
@@ -24,7 +24,8 @@ function levelUp() {
 }
 
 function randomCell() {
-    activeCellNumber = Math.floor(Math.random() * 16);
+    //activeCellNumber = Math.floor(Math.random() * 16);
+    activeCellNumber = 3;
     return activeCellNumber;
 }
 
@@ -43,9 +44,9 @@ function activateCell() {
     var prevScore = score;
     //var currentlyActive = true;
 
-    //cells[target].style.backgroundImage = 'url("http://3.bp.blogspot.com/-x_LFV97PsW0/UPlxd__l8lI/AAAAAAAAC4U/dTXly0e4m4M/s1600/JOCHEN+FUCHS+nicolas_cage.jpg")';
+    cells[target].style.background = 'url("http://3.bp.blogspot.com/-x_LFV97PsW0/UPlxd__l8lI/AAAAAAAAC4U/dTXly0e4m4M/s1600/JOCHEN+FUCHS+nicolas_cage.jpg")';
 
-    cells[target].style.background = "green";
+    //cells[target].style.background = "green";
        //cells[target].animationRising();
 
     setTimeout(function() {
@@ -55,7 +56,7 @@ function activateCell() {
             displayScore();
             gameOver();
         }
-    }, 1000)
+    }, 1500)
 }
 
 
@@ -100,11 +101,9 @@ start.addEventListener("click", function() {
         displayScore();
         getCells = setInterval(function() {
             activateCell();
-        }, 1500);
+        }, 2000);
     }
 });
-
-
 
 
 
@@ -112,11 +111,23 @@ for (var i = 0; i < cells.length; i++) {
     cells[i].addEventListener("click", function() {
         if (playing) {
             var cell = this;
-            if (this.style.background == "green") {
- //             if (i == activeCellNumber) {
+            //console.log("i = " + i)
+            console.log(JSON.stringify(this.style.background));
+
+             if  ((this.style.background) == 
+                ("url(\"http://3.bp.blogspot.com/-x_LFV97PsW0/UPlxd__l8lI/AAAAAAAAC4U/dTXly0e4m4M/s1600/JOCHEN+FUCHS+nicolas_cage.jpg\")"))
+
+            // if (this.style.background == "green") {
+            // if (this.style.backgroundImage.url == 
+            //     url("http://3.bp.blogspot.com/-x_LFV97PsW0/UPlxd__l8lI/AAAAAAAAC4U/dTXly0e4m4M/s1600/JOCHEN+FUCHS+nicolas_cage.jpg")
+            {
+                console.log("success");
                 score++;
-              }
             }
+
+            //  if (i == activeCellNumber) {
+            //     score++;
+            //   }
             else {
                 lives--;
                 gameOver();
@@ -125,10 +136,5 @@ for (var i = 0; i < cells.length; i++) {
         }
     })
 }
-
-
-
-
-
 
 
